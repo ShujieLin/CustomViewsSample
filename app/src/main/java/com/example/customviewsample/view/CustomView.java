@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.view.ViewConfiguration;
 import androidx.annotation.Nullable;
 
 public class CustomView extends View {
+    private Context mContext;
 
 
     private static final String TAG = CustomView.class.getSimpleName();
@@ -20,33 +22,116 @@ public class CustomView extends View {
 
     public CustomView(Context context) {
         super(context);
-        init();
+        init(context);
     }
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(context);
     }
 
     public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init();
+        init(context);
     }
 
     public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        init();
+        init(context);
     }
 
 
-    private void init() {
+    private void init(Context context) {
         Log.d(TAG,"init()");
+        mContext = context;
         getCoordinatePosition();
         getTouchSlop2();
         getVelocity();
+        getGestureDetector();
 
     }
 
+    /**
+     * 手势检测
+     */
+    private void getGestureDetector() {
+
+
+        GestureDetector gestureDetector = new GestureDetector(mContext,new GestureDetector.OnGestureListener() {
+            @Override
+            public boolean onDown(MotionEvent e) {
+                return false;
+            }
+
+            @Override
+            public void onShowPress(MotionEvent e) {
+
+            }
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                return false;
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                return false;
+            }
+        });
+
+
+        GestureDetector.OnGestureListener listener = new GestureDetector.OnGestureListener() {
+            @Override
+            public boolean onDown(MotionEvent e) {
+                return false;
+            }
+
+            @Override
+            public void onShowPress(MotionEvent e) {
+
+            }
+
+            @Override
+            public boolean onSingleTapUp(MotionEvent e) {
+                return false;
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                return false;
+            }
+        };
+
+        GestureDetector.SimpleOnGestureListener simpleOnGestureListener = new GestureDetector.SimpleOnGestureListener();
+
+
+
+    }
+
+
+    /**
+     * 获取滑动速度
+     */
     private void getVelocity() {
         VelocityTracker velocityTracker = VelocityTracker.obtain();
         velocityTracker.computeCurrentVelocity(1000);//代表1000毫秒划过的像素数
@@ -115,7 +200,7 @@ public class CustomView extends View {
             default:
                 break;
         }
-        return true;
+        return false;
     }
 
     /**
