@@ -49,6 +49,8 @@ public class CustomView extends View {
         getVelocity();
         getGestureDetector();
 
+        //ceshi
+
     }
 
     /**
