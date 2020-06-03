@@ -51,84 +51,11 @@ public class CustomView extends View {
 
         //ceshi
 
-    }
-
-    /**
-     * 手势检测
-     */
-    private void getGestureDetector() {
-
-
-        GestureDetector gestureDetector = new GestureDetector(mContext,new GestureDetector.OnGestureListener() {
-            @Override
-            public boolean onDown(MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public void onShowPress(MotionEvent e) {
-
-            }
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                return false;
-            }
-
-            @Override
-            public void onLongPress(MotionEvent e) {
-
-            }
-
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                return false;
-            }
-        });
-
-
-        GestureDetector.OnGestureListener listener = new GestureDetector.OnGestureListener() {
-            @Override
-            public boolean onDown(MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public void onShowPress(MotionEvent e) {
-
-            }
-
-            @Override
-            public boolean onSingleTapUp(MotionEvent e) {
-                return false;
-            }
-
-            @Override
-            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                return false;
-            }
-
-            @Override
-            public void onLongPress(MotionEvent e) {
-
-            }
-
-            @Override
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                return false;
-            }
-        };
-
-        GestureDetector.SimpleOnGestureListener simpleOnGestureListener = new GestureDetector.SimpleOnGestureListener();
-
-
 
     }
+
+
+
 
 
     /**
@@ -182,6 +109,7 @@ public class CustomView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
+
         //返回相对于当前view左上角的x，y坐标
         event.getX();
         event.getY();
@@ -189,21 +117,80 @@ public class CustomView extends View {
         event.getRawX();
         event.getRawY();
 
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                Log.d(TAG,"ACTION_DOWN()");
-                break;
-            case MotionEvent.ACTION_MOVE:
-                Log.d(TAG,"ACTION_MOVE()");
-                break;
-            case MotionEvent.ACTION_UP:
-                Log.d(TAG,"ACTION_UP()");
-                break;
-            default:
-                break;
-        }
-        return false;
+//        switch (event.getAction()){
+//            case MotionEvent.ACTION_DOWN:
+//                Log.d(TAG,"ACTION_DOWN()");
+//                break;
+//            case MotionEvent.ACTION_MOVE:
+//                Log.d(TAG,"ACTION_MOVE()");
+//                break;
+//            case MotionEvent.ACTION_UP:
+//                Log.d(TAG,"ACTION_UP()");
+//                break;
+//            default:
+//                break;
+//        }
+
+
+
+
+
+
+
+
+        return mGestureDetector.onTouchEvent(event);
     }
+
+    /**
+     * 3.1.4手势检测
+     */
+    GestureDetector mGestureDetector;
+
+    /**
+     * 手势检测
+     */
+    private void getGestureDetector() {
+        mGestureDetector = new GestureDetector(mContext,mGestureListener);
+    }
+
+    GestureDetector.OnGestureListener mGestureListener = new GestureDetector.OnGestureListener() {
+        @Override
+        public boolean onDown(MotionEvent motionEvent) {
+            Log.d(TAG,"mGestureListener " + "onDown()");
+            return false;
+        }
+
+        @Override
+        public void onShowPress(MotionEvent motionEvent) {
+
+            Log.d(TAG,"mGestureListener " + "onShowPress()");
+
+        }
+
+        @Override
+        public boolean onSingleTapUp(MotionEvent motionEvent) {
+            Log.d(TAG,"mGestureListener " + "onSingleTapUp()");
+            return false;
+        }
+
+        @Override
+        public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+            Log.d(TAG,"mGestureListener " + "onScroll()");
+            return false;
+        }
+
+        @Override
+        public void onLongPress(MotionEvent motionEvent) {
+            Log.d(TAG,"mGestureListener " + "onDonLongPressown()");
+
+        }
+
+        @Override
+        public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
+            Log.d(TAG,"mGestureListener " + "onFling()");
+            return false;
+        }
+    };
 
     /**
      * 3.1.2

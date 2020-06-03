@@ -14,7 +14,7 @@ public class CustomLayoutParames extends ViewGroup.MarginLayoutParams {
     public static final int POSITION_BOTTOM = 3; // 左下角
     public static final int POSITION_RIGHTANDBOTTOM = 4; // 右下角
 
-    private int postion = POSITION_LEFT;//默认在左上角
+    public int postion = POSITION_LEFT;//默认在左上角
 
     public CustomLayoutParames(Context c, AttributeSet attrs) {
         super(c, attrs);
@@ -31,4 +31,8 @@ public class CustomLayoutParames extends ViewGroup.MarginLayoutParams {
     public CustomLayoutParames(ViewGroup.MarginLayoutParams source) {
         super(source);
     }
+
+
+
+
 }
