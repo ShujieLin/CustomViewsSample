@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomLinearLayout">
+        <attr name="android:name"/>
+        <attr name="SjText" format="string"/>
+
+        <attr name="layout_position" format="integer">
+            <enum name="center" value="0"/>
+            <enum name="left" value="1"/>
+            <enum name="right" value="2"/>
+            <enum name="bottom" value="3"/>
+            <enum name="rightAndBottom" value="4"/>
+        </attr>
+
+    </declare-styleable>
+</resources>

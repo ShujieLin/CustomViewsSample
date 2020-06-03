@@ -1,27 +1,52 @@
 package com.example.customviewsample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.customviewsample.dragview.CustomLinearLayoutViewActivity;
+import com.example.customviewsample.adapter.ViewsListAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements ViewsListAdapter.OnItemClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+
+
+    private RecyclerView mRecyclerView;
+    private List<String> mList;
+    private ViewsListAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = findViewById(R.id.bottom);
-        button.setText("HELLO");
+        initData();
+        initView();
+    }
 
+    private void initData() {
+        mList = new ArrayList<>();
+        mList.add("拖拽view");
+
+    }
+
+    private void initView() {
+        mRecyclerView = findViewById(R.id.recyclerview);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mRecyclerView.setAdapter(mAdapter = new ViewsListAdapter(this,mList));
+
+        mAdapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -30,4 +55,14 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    @Override
+    public void onItemClick(View view, int postion) {
+        Intent intent = new Intent(this, CustomLinearLayoutViewActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemLongClick(View view, int postion) {
+
+    }
 }

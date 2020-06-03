@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.customviewsample.dragview.CustomLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".dragview.CustomLinearLayoutViewActivity">
+
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#FF8247"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "20dip"
+        android:text="按钮1" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#8B0A50"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "10dip"
+        android:text="按钮2222222222222" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#7CFC00"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "15dip"
+        android:text="按钮333333" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#1E90FF"
+        android:textColor= "#ffffff"
+        android:textSize="10dip"
+        android:padding= "10dip"
+        android:text="按钮4" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#191970"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "15dip"
+        android:text="按钮5" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#7A67EE"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "20dip"
+        android:text="按钮6" />
+
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#FF8247"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "20dip"
+        android:text="按钮1" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#8B0A50"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "10dip"
+        android:text="按钮2222222222222" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#7CFC00"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "15dip"
+        android:text="按钮333333" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#1E90FF"
+        android:textColor= "#ffffff"
+        android:textSize="10dip"
+        android:padding= "10dip"
+        android:text="按钮4" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#191970"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "15dip"
+        android:text="按钮5" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#7A67EE"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "20dip"
+        android:text="按钮6" />
+
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#FF8247"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "20dip"
+        android:text="按钮1" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#8B0A50"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "10dip"
+        android:text="按钮2222222222222" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#7CFC00"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "15dip"
+        android:text="按钮333333" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#1E90FF"
+        android:textColor= "#ffffff"
+        android:textSize="10dip"
+        android:padding= "10dip"
+        android:text="按钮4" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#191970"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "15dip"
+        android:text="按钮5" />
+    <Button
+        android:layout_width= "wrap_content"
+        android:layout_height= "wrap_content"
+        android:background= "#7A67EE"
+        android:textColor= "#ffffff"
+        android:textSize="20dip"
+        android:padding= "20dip"
+        android:text="按钮6" />
+
+</com.example.customviewsample.dragview.CustomLinearLayout>
