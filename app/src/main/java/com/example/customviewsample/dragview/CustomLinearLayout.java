@@ -1,7 +1,6 @@
 package com.example.customviewsample.dragview;
 
 import android.content.Context;
-import android.content.IntentFilter;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;

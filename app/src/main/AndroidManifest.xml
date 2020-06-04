@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dragview.CustomLinearLayoutViewActivity"></activity>
+        <activity android:name=".SlideTab.SlideTabActivity"></activity>
+        <activity android:name=".dragview.CustomLinearLayoutViewActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

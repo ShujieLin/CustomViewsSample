@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.customviewsample.SlideTab.SlideTabActivity;
 import com.example.customviewsample.dragview.CustomLinearLayoutViewActivity;
 import com.example.customviewsample.adapter.ViewsListAdapter;
 
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
 
     private void initData() {
         mList = new ArrayList<>();
-        mList.add("拖拽view");
+        mList.add("自定义布局view");
+        mList.add("SldeTab");
 
     }
 
@@ -57,8 +59,19 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
 
     @Override
     public void onItemClick(View view, int postion) {
-        Intent intent = new Intent(this, CustomLinearLayoutViewActivity.class);
-        startActivity(intent);
+        Intent intent;
+        switch (postion){
+            case 0:
+                intent = new Intent(this,CustomLinearLayoutViewActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                intent = new Intent(this, SlideTabActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+
     }
 
     @Override
