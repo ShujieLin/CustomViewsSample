@@ -82,7 +82,7 @@ public class SlideTab3 extends View {
 
         mColorSelected = Color.RED;
         mColorUnSelected = Color.GRAY;
-        mCirclesCount = 12;
+        mCirclesCount = 4;
         mSelectedIndex = 1;
 
         mPaddingTop = 50;
@@ -131,23 +131,19 @@ public class SlideTab3 extends View {
     protected void onDraw(Canvas canvas) {
         Log.d(TAG,"onDraw()" + "getWidth = " + getWidth() + " getHeight = " + getHeight());
 
+        Paint paintLine = new Paint();
+        paintLine.setStrokeWidth(10);
+        paintLine.setColor(mColorUnSelected);
+        Paint paintCircle = new Paint();
+
         //画n个圆，n - 1条线
         for (int i = 0;i < mCirclesCount;i ++){
 
             //每个圆的圆心坐标
             int cx = (mPaddinLeft + (mDiameter / 2))+ ((mDiameter + mLineLength)* i);
             int cy = (mDiameter / 2) + mPaddingTop;
-            Paint paintLine = new Paint();
-            paintLine.setStrokeWidth(10);
-            paintLine.setColor(mColorUnSelected);
-            Paint paintCircle = new Paint();
 
-            //画圆
-            if (i != mSelectedIndex){
-                paintCircle.setColor(mColorUnSelected);
-            }else {
-                paintCircle.setColor(mColorSelected);
-            }
+            paintCircle.setColor(mColorUnSelected);
             canvas.drawCircle(cx,cy,mDiameter / 2,paintCircle);
 
             //画线
@@ -156,6 +152,40 @@ public class SlideTab3 extends View {
             }
 
         }
+
+        //绘制动画
+        //绘制点击圆
+        for (int i = 0;i < mCirclesCount;i ++){
+            //第i个圆的左右边界x坐标
+            int leftBoundary = mPaddinLeft + i * (mLineLength + mDiameter);
+            int rightBoundary = (mPaddinLeft + mDiameter) + i * (mLineLength + mDiameter);
+
+            //圆心坐标
+            int cx = (mPaddinLeft + (mDiameter / 2))+ ((mDiameter + mLineLength)* i);
+            int cy = (mDiameter / 2) + mPaddingTop;
+
+            //绘制圆
+            if ((mSlidX > leftBoundary) && (mSlidX < rightBoundary)){
+                //每个圆的圆心坐标
+                paintCircle.setColor(mColorSelected);
+                canvas.drawCircle(cx,cy,mDiameter / 2,paintCircle);
+            }
+
+            //绘制线
+            int leftBoundaryLine = mPaddinLeft + mDiameter;
+            int rightBoundaryLine = mPaddinLeft + (mDiameter + mLineLength) * (i + 1);
+            if ((mSlidX > leftBoundaryLine) && (mSlidX < rightBoundaryLine)){
+                paintLine.setColor(mColorSelected);
+                canvas.drawLine(leftBoundaryLine,cy,mSlidX,cy,paintLine);
+            }
+
+
+        }
+
+
+
+
+
     }
 
 
@@ -173,19 +203,34 @@ public class SlideTab3 extends View {
         mSlidX = event.getX();
         mSlidY = event.getY();
 
+//        处理线的边界
+//        获取通道里面的每个坐标位置，规定获取矩形的坐标内部
+        if (mSlidX < mPaddinLeft){
+            mSlidX = mPaddinLeft;
+        }else if (mSlidX > getWidth() - mPaddingRight){
+            mSlidX = getWidth() - mPaddingRight;
+        }
+
+        if (mSlidY < mPaddingTop){
+            mSlidY = mPaddingTop;
+        }else if (mSlidY > getHeight() - mPaddingBottom){
+            mSlidY = getHeight() - mPaddingBottom;
+        }
 
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 mIsSliding = true;
+                invalidate();
                 Log.d(TAG,"ACTION_DOWN" + " x = " + mSlidX + " y = " + mSlidY);
                 break;
             case MotionEvent.ACTION_MOVE:
+                invalidate();
                 Log.d(TAG,"ACTION_MOVE" + " x = " + mSlidX + " y = " + mSlidY);
                 break;
             case MotionEvent.ACTION_UP:
                 Log.d(TAG,"ACTION_UP" + " x = " + mSlidX + " y = " + mSlidY);
+                mIsSliding = false;
                 break;
-
         }
 
         return true;

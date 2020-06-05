@@ -1,6 +1,7 @@
 package com.example.customviewsample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ import android.view.View;
 import com.example.customviewsample.SlideTab.SlideTabActivity;
 import com.example.customviewsample.dragview.CustomLinearLayoutViewActivity;
 import com.example.customviewsample.adapter.ViewsListAdapter;
+import com.example.customviewsample.view.ItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +47,8 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
     private void initView() {
         mRecyclerView = findViewById(R.id.recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        mRecyclerView.addItemDecoration(new ItemDecoration(this,ItemDecoration.VERTICAL_LIST));
         mRecyclerView.setAdapter(mAdapter = new ViewsListAdapter(this,mList));
-
         mAdapter.setOnItemClickListener(this);
     }
 
