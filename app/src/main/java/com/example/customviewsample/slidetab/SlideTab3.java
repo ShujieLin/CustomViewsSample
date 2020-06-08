@@ -1,4 +1,4 @@
-package com.example.customviewsample.SlideTab;
+package com.example.customviewsample.slidetab;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -149,6 +149,8 @@ public class SlideTab3 extends View {
             //画线
             if (i  < mCirclesCount - 1){
                 canvas.drawLine(cx + (mDiameter / 2) , cy,cx + (mDiameter / 2) +  mLineLength ,cy,paintLine);
+//                canvas.drawLine(mSlidX - 100 , cy,cx + (mDiameter / 2) +  mLineLength ,cy,paintLine);
+
             }
 
         }
@@ -176,15 +178,9 @@ public class SlideTab3 extends View {
             int rightBoundaryLine = mPaddinLeft + (mDiameter + mLineLength) * (i + 1);
             if ((mSlidX > leftBoundaryLine) && (mSlidX < rightBoundaryLine)){
                 paintLine.setColor(mColorSelected);
-                canvas.drawLine(leftBoundaryLine,cy,mSlidX,cy,paintLine);
+                canvas.drawLine(mSlidX - 100,cy,mSlidX + 100,cy,paintLine);
             }
-
-
         }
-
-
-
-
 
     }
 

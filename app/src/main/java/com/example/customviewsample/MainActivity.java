@@ -1,7 +1,6 @@
 package com.example.customviewsample;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,8 +10,10 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.customviewsample.SlideTab.SlideTabActivity;
-import com.example.customviewsample.dragview.CustomLinearLayoutViewActivity;
+import com.example.customviewsample.grid.PagerActivity;
+import com.example.customviewsample.pager.Activity3;
+import com.example.customviewsample.slidetab.SlideTabActivity;
+import com.example.customviewsample.simple_custom_layout.CustomLinearLayoutViewActivity;
 import com.example.customviewsample.adapter.ViewsListAdapter;
 import com.example.customviewsample.view.ItemDecoration;
 
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList = new ArrayList<>();
         mList.add("自定义布局view");
         mList.add("SldeTab");
-
+        mList.add("Grid");
+        mList.add("Pager");
     }
 
     private void initView() {
@@ -70,7 +72,12 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
                 intent = new Intent(this, SlideTabActivity.class);
                 startActivity(intent);
                 break;
-
+            case 2:
+                intent = new Intent(this, PagerActivity.class);
+                startActivity(intent);
+            case 3:
+                intent = new Intent(this, Activity3.class);
+                startActivity(intent);
         }
 
     }

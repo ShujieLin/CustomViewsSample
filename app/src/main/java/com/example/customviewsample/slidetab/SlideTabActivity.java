@@ -1,4 +1,4 @@
-package com.example.customviewsample.SlideTab;
+package com.example.customviewsample.slidetab;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SlideTab.SlideTabActivity">
+    tools:context=".slidetab.SlideTabActivity">
 
-    <com.example.customviewsample.SlideTab.SlideTab3
+    <com.example.customviewsample.slidetab.SlideTab3
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"

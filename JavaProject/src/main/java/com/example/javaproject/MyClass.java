@@ -12,12 +12,20 @@ public class MyClass {
 //        System.out.print(2 + 3453);
 
 
-        removeDuplicates2(new int[]{0,0,1,1,1,2,2,3,3,4,55,100});
+//        removeDuplicates2(new int[]{0,0,1,1,1,2,2,3,3,4,55,100});
 //        removeDuplicates2(new int[]{0,0,1,2});
-        replaceArrFirstNum();
+//        replaceArrFirstNum();
+
+        test1();
     }
 
+    private static void test1() {
+        System.out.println(5 / 4);
+        System.out.println( 5 % 2);
 
+        System.out.println(9 / 4);
+        System.out.println( 9 % 4);
+    }
 
 
     /**

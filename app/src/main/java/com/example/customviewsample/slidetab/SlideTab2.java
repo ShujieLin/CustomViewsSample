@@ -1,4 +1,4 @@
-package com.example.customviewsample.SlideTab;
+package com.example.customviewsample.slidetab;
 
 import android.content.Context;
 import android.graphics.Canvas;
