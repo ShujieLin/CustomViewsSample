@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.customviewsample.dragview.CustomLinearLayoutViewActivity;
 import com.example.customviewsample.adapter.ViewsListAdapter;
+import com.example.customviewsample.view1.Main1Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
     private void initData() {
         mList = new ArrayList<>();
         mList.add("拖拽view");
+        mList.add("自定义view学习");
 
     }
 
@@ -57,12 +59,25 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
 
     @Override
     public void onItemClick(View view, int postion) {
-        Intent intent = new Intent(this, CustomLinearLayoutViewActivity.class);
-        startActivity(intent);
+        Intent intent ;
+        switch (postion){
+            case 0:
+                intent = new Intent(this, CustomLinearLayoutViewActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                intent = new Intent(this, Main1Activity.class);
+                startActivity(intent);
+                break;
+            default:
+        }
+
+
     }
 
     @Override
     public void onItemLongClick(View view, int postion) {
 
     }
+
 }
