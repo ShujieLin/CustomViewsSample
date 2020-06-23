@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dragview.CustomLinearLayoutViewActivity"></activity>
+        <activity android:name=".view5.Main5Activity"></activity>
+        <activity android:name=".simple_custom_layout.CustomLinearLayoutViewActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,6 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view1.Main1Activity" />
+        <activity android:name=".slidetab.SlideTabActivity" />
+        <activity android:name=".pager.Activity3" />
+        <activity android:name=".grid.PagerActivity" />
     </application>
 
 </manifest>

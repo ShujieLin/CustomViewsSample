@@ -10,8 +10,13 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.customviewsample.dragview.CustomLinearLayoutViewActivity;
 import com.example.customviewsample.adapter.ViewsListAdapter;
+import com.example.customviewsample.grid.PagerActivity;
+import com.example.customviewsample.pager.Activity3;
+import com.example.customviewsample.simple_custom_layout.CustomLinearLayoutViewActivity;
+import com.example.customviewsample.slidetab.SlideTabActivity;
+import com.example.customviewsample.view1.Main1Activity;
+import com.example.customviewsample.view5.Main5Activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,10 +25,10 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
-
     private RecyclerView mRecyclerView;
     private List<String> mList;
     private ViewsListAdapter mAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +41,13 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
 
     private void initData() {
         mList = new ArrayList<>();
-        mList.add("拖拽view");
+        mList.add("CustomLayout");//0
+        mList.add("view1");//1
+        mList.add("SlideTabView");//2
+        mList.add("CusGridLayout");//3
+        mList.add("LSJPager");//4
+        mList.add("CustomViewGroup");//5
+
 
     }
 
@@ -57,12 +68,39 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
 
     @Override
     public void onItemClick(View view, int postion) {
-        Intent intent = new Intent(this, CustomLinearLayoutViewActivity.class);
-        startActivity(intent);
+        Intent intent;
+        switch (postion) {
+            case 0:
+                intent = new Intent(this, CustomLinearLayoutViewActivity.class);
+                startActivity(intent);
+                break;
+            case 1:
+                intent = new Intent(this, Main1Activity.class);
+                startActivity(intent);
+                break;
+            case 2:
+                intent = new Intent(this, SlideTabActivity.class);
+                startActivity(intent);
+                break;
+            case 3:
+                intent = new Intent(this, PagerActivity.class);
+                startActivity(intent);
+                break;
+            case 4:
+                intent = new Intent(this, Activity3.class);
+                startActivity(intent);
+                break;
+            case 5:
+                intent = new Intent(this, Main5Activity.class);
+                startActivity(intent);
+                break;
+            default:
+        }
     }
 
     @Override
     public void onItemLongClick(View view, int postion) {
 
     }
+
 }

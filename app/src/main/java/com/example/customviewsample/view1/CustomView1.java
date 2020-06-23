@@ -56,26 +56,33 @@ public class CustomView1 extends View {
      */
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        super.onLayout(changed, left, top, right, bottom);
         mMeasureWidth = getMeasuredWidth();
         mMeasureHeight = getMeasuredHeight();
         mWidth = getWidth();
         mHeight = getHeight();
     }
 
+    int mRectFLeft;
+    int mRectFTop;
+    int mRectFRight;
+    int mRectFBottom;
 
     @Override
     protected void onDraw(Canvas canvas) {
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColor(Color.RED);
+
+        //添加padding
         int paddingLeft = getPaddingLeft();
         int paddingRight = getPaddingRight();
         int paddingTop = getPaddingTop();
         int paddingBottom = getPaddingBottom();
 
-
-
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setColor(Color.RED);
-        RectF rectF = new RectF(0 + paddingLeft,0 + paddingTop,mMeasureWidth - paddingRight,mMeasureHeight - paddingBottom);
+        mRectFLeft = 0 + paddingLeft;
+        mRectFTop = 0 + paddingTop;
+        mRectFRight = mMeasureWidth - paddingRight;
+        mRectFBottom = mMeasureHeight - paddingBottom;
+        RectF rectF = new RectF(mRectFLeft,mRectFTop,mRectFRight,mRectFBottom);
 
         canvas.save();
         canvas.drawRect(rectF,paint);
@@ -87,23 +94,24 @@ public class CustomView1 extends View {
     private void drawSize(Canvas canvas) {
         TextPaint textPaint = new TextPaint();
         textPaint.setColor(Color.BLACK);
-        textPaint.setTextSize(20);
-        String text1 = "尺寸"
+        textPaint.setTextSize(40);
+        String text1 = "尺寸: "
                 + "mMeasureWidth = " + mMeasureWidth
                 + "  mMeasureHeight = " + mMeasureHeight;
-        String text2 = "尺寸"
+        String text2 = "尺寸: "
                 + "mWidth = " + mWidth
                 + "  mHeight = " + mHeight;
         StaticLayout staticLayout1 = new StaticLayout(text1, textPaint,400, Layout.Alignment.ALIGN_NORMAL,1,0,true);
         StaticLayout staticLayout2 = new StaticLayout(text2, textPaint,400, Layout.Alignment.ALIGN_NORMAL,1,0,true);
 
-
         canvas.save();
+        canvas.translate(mRectFLeft,mRectFTop);
         staticLayout1.draw(canvas);
         canvas.translate(0,staticLayout1.getHeight() + 10);
         staticLayout2.draw(canvas);
         canvas.restore();
     }
+
 
 
 }

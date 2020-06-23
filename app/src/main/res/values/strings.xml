@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">自定义ViewSample</string>
+    <string name="helloworld">HELLO</string>
 </resources>

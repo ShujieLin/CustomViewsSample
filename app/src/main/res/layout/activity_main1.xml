@@ -8,10 +8,14 @@
     android:background="@android:color/darker_gray">
 
     <com.example.customviewsample.view1.CustomView1
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        android:paddingTop="10dp"
-        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="50dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
