@@ -23,8 +23,6 @@ public class CustomLinearLayout extends ViewGroup {
     }
 
 
-
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         mChildViewCount = getChildCount();

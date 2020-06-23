@@ -15,6 +15,7 @@ import com.example.customviewsample.pager.Activity3;
 import com.example.customviewsample.slidetab.SlideTabActivity;
 import com.example.customviewsample.simple_custom_layout.CustomLinearLayoutViewActivity;
 import com.example.customviewsample.adapter.ViewsListAdapter;
+import com.example.customviewsample.test_view.Activity4;
 import com.example.customviewsample.view.ItemDecoration;
 
 import java.util.ArrayList;
@@ -77,6 +78,9 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
                 startActivity(intent);
             case 3:
                 intent = new Intent(this, Activity3.class);
+                startActivity(intent);
+            case 4:
+                intent = new Intent(this, Activity4.class);
                 startActivity(intent);
         }
 

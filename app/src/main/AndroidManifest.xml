@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".pager.Activity3"></activity>
+        <activity android:name=".test_view.Activity4"></activity>
+        <activity android:name=".pager.Activity3" />
         <activity android:name=".grid.PagerActivity" />
         <activity android:name=".slidetab.SlideTabActivity" />
         <activity android:name=".simple_custom_layout.CustomLinearLayoutViewActivity" />

@@ -3,6 +3,7 @@ package com.example.customviewsample.grid;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -57,6 +58,23 @@ public class CusGridLayout extends ViewGroup {
         init();
         mChildViewCount = getChildCount();
         setMeasuredDimension(getDefaultSize(getSuggestedMinimumWidth(),widthMeasureSpec),getDefaultSize(getSuggestedMinimumHeight(),heightMeasureSpec));
+
+        for (int i = 0;i < getChildCount();i ++){
+            View childView = getChildAt(i);
+
+            int selfWidthSpecMode = MeasureSpec.getMode(widthMeasureSpec);
+            int selfWidthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
+            LayoutParams lp = childView.getLayoutParams();
+            switch (lp.width){
+                case LayoutParams.MATCH_PARENT:
+                    if (selfWidthSpecMode == MeasureSpec.EXACTLY || selfWidthSpecMode == MeasureSpec.AT_MOST){
+                        
+                    }
+                    break;
+
+            }
+        }
+
     }
 
 

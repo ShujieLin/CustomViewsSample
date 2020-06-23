@@ -22,6 +22,7 @@ public class LSJPager extends ViewGroup{
     private int mCurrentIndex;
 
 
+
     private Context mContext;
 
     public LSJPager(Context context, AttributeSet attrs) {
@@ -89,52 +90,44 @@ public class LSJPager extends ViewGroup{
             case MotionEvent.ACTION_MOVE:
                 Log.d(TAG,"ACTION_MOVE()");
                 break;
-            case MotionEvent.ACTION_UP:
-                Log.d(TAG,"ACTION_UP()");
-
-                //添加判断，应该滑动到哪一页
-
-                int targetIndex = 0;
-                //计算有效滑动距离，假如滑动超过一半，则进行滑动
-                if ((event.getX() - mFirstTouchX) > (getWidth() / 2)){//左移动
-                    //计算目标页index
-//                    targetIndex = (mCurrentIndex - 1) < 0 ? 0 : mCurrentIndex - 1;
-                    targetIndex = mCurrentIndex - 1;
-                }else if ((event.getX() - mFirstTouchX) < (getWidth() / 2)){//右移动
-                    targetIndex = mCurrentIndex + 1;
-                }else {
-                    targetIndex = mCurrentIndex;
+            case MotionEvent.ACTION_UP : // 抬起
+                int nextId = 0; // 记录下一个View的id
+                if (event.getX() - mFirstTouchX > getWidth() / 2) {
+                    // 手指离开点的X轴坐标-firstDownX > 屏幕宽度的一半，左移
+                    nextId = (mCurrId - 1) <= 0 ? 0 : mCurrId - 1;
+//                    nextId = mCurrId - 1;
+                } else if (mFirstTouchX - event.getX() > getWidth() / 2) {
+                    // 手指离开点的X轴坐标 - firstDownX < 屏幕宽度的一半，右移
+                    nextId = mCurrId + 1;
+                } else {
+                    nextId = mCurrId;
                 }
 
-                Log.d(TAG,"ACTION_UP()" + " X = " + event.getX() + " mFirstTouchX = " + mFirstTouchX);
-
-
-                moveToDest(targetIndex);
-                break;
-            default:
+                moveToDest(nextId);
                 break;
         }
 
         //判断左滑还是右滑
-
-
         return true;
     }
 
-    private void moveToDest(int targetIndex) {
-//        mCurrentIndex = (targetIndex > 0) ? targetIndex : 0;
-//        mCurrentIndex = (targetIndex <= getChildCount() ? targetIndex : targetIndex - 1);
-        //边界处理
-        mCurrentIndex = targetIndex < 0 ? targetIndex + 1 : targetIndex;
-        //index = 2 count = 3
-        mCurrentIndex = (targetIndex >= getChildCount()) ? targetIndex - 1 : targetIndex;
 
+    private int mCurrId;
+    private void moveToDest(int nextId) {
+// nextId的合理范围是，nextId >=0 && nextId <= getChildCount()-1
+        mCurrId = (nextId >= 0) ? nextId : 0;
+        mCurrId = (nextId <= getChildCount() - 1)
+                ? nextId
+                : (getChildCount() - 1);
 
-        //获取滑动距离
-        int distanceX = mCurrentIndex * getWidth() - getScrollX();
-        Log.d(TAG,"moveToDest()" + "mCurrentIndex = " + mCurrentIndex + " distanceX = " + distanceX);
+        // 视图移动,太直接了，没有动态过程
+        // scrollTo(mCurrId * getWidth(), 0);
+        // 要移动的距离 = 最终的位置 - 现在的位置
+        int distanceX = mCurrId * getWidth() - getScrollX();
+        // 设置运行的时间
+        mMyScroller.startScroll(getScrollX(), 0, distanceX, 0);
+        // 刷新视图
 
-        mMyScroller.startScroll(getScrollX(),0,distanceX,0);
         invalidate();
     }
 
