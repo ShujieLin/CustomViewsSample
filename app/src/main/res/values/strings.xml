@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">自定义ViewSample</string>
-    <string name="helloworld">helloworld!</string>
-    <string name="left">左边</string>
 </resources>
