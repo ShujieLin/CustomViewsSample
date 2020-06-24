@@ -1,9 +1,12 @@
 package com.example.customviewsample.view5;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.customviewsample.R;
 
 public class CustomViewGroup extends ViewGroup {
     private int mChildrenSize;
@@ -36,6 +39,7 @@ public class CustomViewGroup extends ViewGroup {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         // TODO: 2020/6/23 这里不规范 ，默认不为0，应该根据LayoutParmas中宽高做处理
+
         int measureWidth = 0;
         int measureHeight = 0;
 
@@ -51,8 +55,12 @@ public class CustomViewGroup extends ViewGroup {
             setMeasuredDimension(0,0);
         }else if (widthSpecMode == MeasureSpec.AT_MOST && heightSpecMode == MeasureSpec.AT_MOST){
             final View childView = getChildAt(0);
-            measureWidth = childView.getMeasuredWidth() * childCount;
-            measureHeight = childView.getMeasuredHeight();
+
+            MyLayoutParams lp = (MyLayoutParams) childView.getLayoutParams();
+
+            measureWidth = childView.getMeasuredWidth() * childCount + lp.leftMargin + lp.rightMargin;
+            measureHeight = childView.getMeasuredHeight() + lp.topMargin + lp.bottomMargin;
+
             setMeasuredDimension(measureWidth,measureHeight);
         }else if (heightSpecMode == MeasureSpec.AT_MOST){
             final View childView = getChildAt(0);
@@ -80,6 +88,20 @@ public class CustomViewGroup extends ViewGroup {
                 childView.layout(childLeft,0,childLeft + childWidth,childView.getMeasuredHeight());
                 childLeft += childWidth;
             }
+        }
+
+    }
+
+    @Override
+    public LayoutParams generateLayoutParams(AttributeSet attrs) {
+//        return super.generateLayoutParams(attrs);
+        return new MyLayoutParams(getContext(),attrs);
+    }
+
+    class MyLayoutParams extends ViewGroup.MarginLayoutParams{
+
+        public MyLayoutParams(Context c, AttributeSet attrs) {
+            super(c, attrs);
         }
 
     }
