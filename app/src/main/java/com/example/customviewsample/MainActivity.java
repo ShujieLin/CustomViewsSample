@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.example.customviewsample.adapter.ViewsListAdapter;
+import com.example.customviewsample.animation_demo.Main6Activity;
 import com.example.customviewsample.grid.PagerActivity;
 import com.example.customviewsample.pager.Activity3;
 import com.example.customviewsample.simple_custom_layout.CustomLinearLayoutViewActivity;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList.add("CusGridLayout");//3
         mList.add("LSJPager");//4
         mList.add("CustomViewGroup");//5
+        mList.add("属性动画demo");
 
 
     }
@@ -94,6 +96,9 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
                 intent = new Intent(this, Main5Activity.class);
                 startActivity(intent);
                 break;
+            case 6:
+                intent = new Intent(this, Main6Activity.class);
+                startActivity(intent);
             default:
         }
     }
