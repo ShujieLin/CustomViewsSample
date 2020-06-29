@@ -140,4 +140,5 @@ public class VerticalViewGroup extends ViewGroup {
 //        return super.generateLayoutParams(attrs);
         return new MarginLayoutParams(getContext(),attrs);
     }
+
 }
