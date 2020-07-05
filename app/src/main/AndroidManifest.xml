@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".animation_demo.Main6Activity"></activity>
+        <activity android:name=".big_image.Main7Activity"></activity>
+        <activity android:name=".animation_demo.Main6Activity" />
         <activity android:name=".view5.Main5Activity" />
         <activity android:name=".simple_custom_layout.CustomLinearLayoutViewActivity" />
         <activity android:name=".MainActivity">

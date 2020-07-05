@@ -68,6 +68,9 @@ public class Main6Activity extends AppCompatActivity implements View.OnClickList
     }
 
 
+    /**
+     * 用一个类来包装原始对象，间接为其提供get和set方法
+     */
     private static class ViewWrapper{
         private View mTarget;
         public ViewWrapper(View target){
@@ -78,7 +81,6 @@ public class Main6Activity extends AppCompatActivity implements View.OnClickList
             mTarget.getLayoutParams().width = width;
             mTarget.requestLayout();
         }
-
     }
 
 
