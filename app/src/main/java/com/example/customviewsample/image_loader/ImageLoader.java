@@ -2,13 +2,16 @@ package com.example.customviewsample.image_loader;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.os.StatFs;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.LruCache;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -23,8 +26,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
@@ -34,9 +38,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.net.ssl.HttpsURLConnection;
 
-import static android.os.AsyncTask.THREAD_POOL_EXECUTOR;
-
-public class ImageLoader extends ViewGroup {
+public class ImageLoader{
 
 
     private static final String TAG = ImageLoader.class.getSimpleName();
@@ -70,16 +72,13 @@ public class ImageLoader extends ViewGroup {
 
 
     public ImageLoader(Context context) {
-        super(context);
-        Bitmap bitmap = null;
-
         mContext = context.getApplicationContext();
         //这里ImageLoader的内存缓存的容量为当前进程可用内存的1/8,
         int maxMemory = (int)(Runtime.getRuntime().maxMemory() / 1024);
         int cacheSize = maxMemory / 8;
         mMemoryCache = new LruCache<String,Bitmap>(cacheSize){
             @Override
-            protected int sizeOf(String key, Bitmap value) {
+            protected int sizeOf(String key, Bitmap bitmap) {
                 return bitmap.getRowBytes() * bitmap.getHeight() / 1024;
             }
         };
@@ -111,13 +110,26 @@ public class ImageLoader extends ViewGroup {
 
 
 
-    private int getUsableSpace(File diskCacheDir) {
-        return 0;
+    private long getUsableSpace(File path) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD){
+            return path.getUsableSpace();
+        }
+        final StatFs statFs = new StatFs(path.getPath());
+        return (long)statFs.getBlockSize() * (long)statFs.getAvailableBlocks();
     }
 
-    private File getDiskCacheDir(Context context, String bitmap) {
-        return null;
+    private File getDiskCacheDir(Context context, String uniqueName) {
+        boolean externalStorageAvailable = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+        final String cachePath;
+        if (externalStorageAvailable){
+            cachePath = context.getExternalCacheDir().getPath();
+        }else {
+            cachePath = context.getExternalCacheDir().getPath();
+        }
+        return new File(cachePath + File.separator + uniqueName);
     }
+
+
 
     /**
      * 添加内存缓存
@@ -206,13 +218,14 @@ public class ImageLoader extends ViewGroup {
 
 
     private boolean downloadUrlToStream(String urlString, OutputStream outputStream) {
-        HttpsURLConnection urlConnection = null;
+        HttpURLConnection urlConnection = null;
         BufferedOutputStream out = null;
         BufferedInputStream in = null;
         try {
             final URL url = new URL(urlString);
-            urlConnection = (HttpsURLConnection) url.openConnection();
+            urlConnection = (HttpURLConnection) url.openConnection();
             in = new BufferedInputStream(urlConnection.getInputStream(),IO_BUFFER_SIZE);
+            Log.d(TAG,"url = " + url + " in = " + in.toString());
             out = new BufferedOutputStream(outputStream,IO_BUFFER_SIZE);
             int b;
             while ((b = in.read()) != -1){
@@ -220,7 +233,7 @@ public class ImageLoader extends ViewGroup {
             }
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             Log.e(TAG,"downloadBitmap failed." + e);
         }finally {
             if (urlConnection != null){
@@ -235,7 +248,28 @@ public class ImageLoader extends ViewGroup {
 
 
     private String hashKeyFromUrl(String url) {
-        return null;
+        String cacheKey;
+        try {
+            final MessageDigest digest = MessageDigest.getInstance("MD5");
+            digest.update(url.getBytes());
+            cacheKey = bytesToHexString(digest.digest());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            cacheKey = String.valueOf(url.hashCode());
+        }
+        return cacheKey;
+    }
+
+    private String bytesToHexString(byte[] bytes) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0;i < bytes.length;i ++){
+            String hex = Integer.toHexString(0xFF & bytes[i]);
+            if (hex.length() == 1){
+                sb.append('0');
+            }
+            sb.append(hex);
+        }
+        return sb.toString();
     }
 
 
@@ -292,6 +326,7 @@ public class ImageLoader extends ViewGroup {
      * @param reqHeight
      */
     public void bindBitmap(final String uri, final ImageView imageView,final int reqWidth,final int reqHeight){
+
         imageView.setTag(TAG_KEY_URI,uri);
         //尝试从内存缓存中读取图片，如果读取成功直接返回结果
         Bitmap bitmap = loadBitmapFromMemCache(uri);
@@ -306,7 +341,7 @@ public class ImageLoader extends ViewGroup {
                 Bitmap bitmap = loadBitmap(uri,reqWidth,reqHeight);
                 if (bitmap != null){
                     //当图片加载成功后，将图片、图片的地址以及需要绑定的imageView封装成一个LoaderResult对象
-                    LoaderResult result = new LoaderResult(imageView,uri);
+                    LoaderResult result = new LoaderResult(imageView,uri,bitmap);
                     //再通过mMainHandler向主线程发送一个消息，这样就可以在主线中给imageView设置图片了。
                     mMainHandler.obtainMessage(MESSAGE_POST_RESULT,result).sendToTarget();
                 }
@@ -315,8 +350,25 @@ public class ImageLoader extends ViewGroup {
         THREAD_POOL_EXECUTOR.execute(loadBitmapTask);
     }
 
-    private Bitmap downloadBitmapFromUrl(String uri) {
-        return null;
+    private Bitmap downloadBitmapFromUrl(String urlString) {
+        Bitmap bitmap = null;
+        HttpURLConnection urlConnection = null;
+        BufferedInputStream in = null;
+        try {
+            final  URL url = new URL(urlString);
+            urlConnection = (HttpURLConnection) url.openConnection();
+            in = new BufferedInputStream(urlConnection.getInputStream(),IO_BUFFER_SIZE);
+            bitmap = BitmapFactory.decodeStream(in);
+            bitmap = BitmapFactory.decodeStream(in);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            if (urlConnection != null){
+                urlConnection.disconnect();
+            }
+            MyUtils.close(in);
+        }
+        return bitmap;
     }
 
     private Bitmap loadBitmapFromMemCache(String url) {
@@ -326,27 +378,17 @@ public class ImageLoader extends ViewGroup {
     }
 
 
-    public ImageLoader(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public ImageLoader(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
-
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-
-    }
-
 
     private class LoaderResult {
         public ImageView imageView;
         public Bitmap bitmap;
         public String uri;
 
-        public LoaderResult(ImageView imageView, String uri) {
+        public LoaderResult(ImageView imageView, String uri,Bitmap bitmap) {
             this.imageView = imageView;
+            this.uri = uri;
+            this.bitmap = bitmap;
+
         }
     }
 

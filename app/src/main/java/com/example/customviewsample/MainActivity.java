@@ -14,6 +14,7 @@ import com.example.customviewsample.adapter.ViewsListAdapter;
 import com.example.customviewsample.animation_demo.Main6Activity;
 import com.example.customviewsample.big_image.Main7Activity;
 import com.example.customviewsample.grid.PagerActivity;
+import com.example.customviewsample.image_loader.Main8Activity;
 import com.example.customviewsample.pager.Activity3;
 import com.example.customviewsample.simple_custom_layout.CustomLinearLayoutViewActivity;
 import com.example.customviewsample.slidetab.SlideTabActivity;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList.add("CustomViewGroup");//5
         mList.add("属性动画demo");
         mList.add("加载大图");//7
+        mList.add("ImageLoader");//8
 
 
     }
@@ -101,10 +103,18 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
             case 6:
                 intent = new Intent(this, Main6Activity.class);
                 startActivity(intent);
+                break;
             case 7:
                 intent = new Intent(this, Main7Activity.class);
                 startActivity(intent);
+                break;
+            case 8:
+                intent = new Intent(this, Main8Activity.class);
+                startActivity(intent);
+                break;
             default:
+                break;
+
         }
     }
 
