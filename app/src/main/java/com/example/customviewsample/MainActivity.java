@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.example.customviewsample.CustomRecyclerView.Main10Activity;
 import com.example.customviewsample.adapter.ViewsListAdapter;
 import com.example.customviewsample.animation_demo.Main6Activity;
+import com.example.customviewsample.asnync_task_view.Main9Activity;
 import com.example.customviewsample.big_image.Main7Activity;
 import com.example.customviewsample.grid.PagerActivity;
 import com.example.customviewsample.image_loader.Main8Activity;
@@ -53,10 +55,8 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList.add("属性动画demo");
         mList.add("加载大图");//7
         mList.add("ImageLoader");//8
-        mList.add("模拟事件分发");//9
-
-        mList.add("AsyncTask");
-        mList.add("自定义RecyclerView");
+        mList.add("AsyncTask");//9
+        mList.add("自定义RecyclerView");//10
 
     }
 

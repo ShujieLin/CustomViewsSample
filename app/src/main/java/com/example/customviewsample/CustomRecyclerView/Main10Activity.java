@@ -1,12 +1,13 @@
 package com.example.customviewsample.CustomRecyclerView;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.customviewsample.R;
 
@@ -49,7 +50,7 @@ public class Main10Activity extends AppCompatActivity {
 
             @Override
             public int getCount() {
-                return 30;
+                return 300000;
             }
 
             @Override

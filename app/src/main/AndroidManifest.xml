@@ -18,8 +18,6 @@
         <activity android:name=".CustomRecyclerView.Main10Activity"></activity>
         <activity android:name=".asnync_task_view.Main9Activity" />
         <activity android:name=".image_loader.Main8Activity" />
-        <activity android:name=".event_distribution.Main9Activity"></activity>
-        <activity android:name=".image_loader.Main8Activity" />
         <activity android:name=".big_image.Main7Activity" />
         <activity android:name=".animation_demo.Main6Activity" />
         <activity android:name=".view5.Main5Activity" />

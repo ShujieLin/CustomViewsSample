@@ -345,7 +345,8 @@ public class CustomRecyclerView extends ViewGroup {
 
     private int scrollBounds(int scrollY) {
         if (scrollY > 0){//上滑
-
+//            scrollY = Math.min(scrollY sumArray());
+            scrollY = Math.min(scrollY,sumArrayHeight(heights,firstVisableRow,heights.length - firstVisableRow) - height);
         }else {
 //            scrollY = 0;
             Log.d(TAG, "scrollBounds: " + "处理边界前 : scrollY = " + scrollY + " - sumArrayHeight(heights,0,firstVisableRow) = " + (- sumArrayHeight(heights,0,firstVisableRow)));
