@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyAppclication"
@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".image_loader.Main8Activity"></activity>
+        <activity android:name=".CustomRecyclerView.Main10Activity"></activity>
+        <activity android:name=".asnync_task_view.Main9Activity" />
+        <activity android:name=".image_loader.Main8Activity" />
         <activity android:name=".big_image.Main7Activity" />
         <activity android:name=".animation_demo.Main6Activity" />
         <activity android:name=".view5.Main5Activity" />
