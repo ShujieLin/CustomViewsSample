@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+
 import com.example.customviewsample.R;
 
 public class CustomViewGroup extends ViewGroup {
@@ -33,6 +35,10 @@ public class CustomViewGroup extends ViewGroup {
 
     }
 
+    @Override
+    public void setOnClickListener(@Nullable OnClickListener l) {
+        super.setOnClickListener(l);
+    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

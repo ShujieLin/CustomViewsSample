@@ -13,7 +13,6 @@ import android.view.View;
 import com.example.customviewsample.adapter.ViewsListAdapter;
 import com.example.customviewsample.animation_demo.Main6Activity;
 import com.example.customviewsample.big_image.Main7Activity;
-import com.example.customviewsample.event_distribution.Main9Activity;
 import com.example.customviewsample.grid.PagerActivity;
 import com.example.customviewsample.image_loader.Main8Activity;
 import com.example.customviewsample.pager.Activity3;
@@ -56,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList.add("ImageLoader");//8
         mList.add("模拟事件分发");//9
 
+        mList.add("AsyncTask");
+        mList.add("自定义RecyclerView");
 
     }
 
@@ -116,6 +117,10 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
                 break;
             case 9:
                 intent = new Intent(this, Main9Activity.class);
+                startActivity(intent);
+                break;
+            case 10:
+                intent = new Intent(this, Main10Activity.class);
                 startActivity(intent);
                 break;
             default:

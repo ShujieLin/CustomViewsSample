@@ -161,6 +161,7 @@ public class ImageLoader{
      * @throws IOException
      */
     private Bitmap loadBitmapFromHttp(String url,int reqWidth,int reqHeight) throws IOException{
+//        Log.d(TAG,"loadBitmapFromHttp()" + " url = " + url);
         if(Looper.myLooper() == Looper.getMainLooper()){
             throw new RuntimeException("can not visit network form UI Thread.");
         }
@@ -223,6 +224,7 @@ public class ImageLoader{
         BufferedInputStream in = null;
         try {
             final URL url = new URL(urlString);
+            Log.d(TAG,"url = " + url + " in = " + in.toString());
             urlConnection = (HttpURLConnection) url.openConnection();
             in = new BufferedInputStream(urlConnection.getInputStream(),IO_BUFFER_SIZE);
             Log.d(TAG,"url = " + url + " in = " + in.toString());
@@ -416,5 +418,4 @@ public class ImageLoader{
             KEEP_ALIVE,
             TimeUnit.MINUTES,
             new LinkedBlockingQueue<Runnable>(),sThreadFactory);
-
 }
