@@ -1,3 +1,5 @@
 rootProject.name='CustomViewSample'
 include ':app'
 include ':JavaProject'
+include ':lib'
+include ':EventDistribution'

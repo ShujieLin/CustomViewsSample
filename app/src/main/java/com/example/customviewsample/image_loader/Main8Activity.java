@@ -95,7 +95,8 @@ public class Main8Activity extends AppCompatActivity implements AbsListView.OnSc
 
         private ImageAdapter(Context context){
             mInflater = LayoutInflater.from(context);
-            mDefaultBitmapDrawable = context.getResources().getDrawable(R.drawable.image_default);
+            mDefaultBitmapDrawable = context.getResources().getDrawable(R.drawable.ic_launcher_background);
+
         }
 
         @Override
