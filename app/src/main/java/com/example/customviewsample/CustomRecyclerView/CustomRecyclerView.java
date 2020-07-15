@@ -399,6 +399,5 @@ public class CustomRecyclerView extends ViewGroup {
         int getCount();
         int getHeight(int index);
 
-
     }
 }
