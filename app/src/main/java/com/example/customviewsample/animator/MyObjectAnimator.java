@@ -48,7 +48,6 @@ public class MyObjectAnimator  implements VSYNCManager.AnimationFrameCallback {
      */
     @Override
     public boolean doAnimationFrame(long currentTime) {
-
         return false;
     }
 
