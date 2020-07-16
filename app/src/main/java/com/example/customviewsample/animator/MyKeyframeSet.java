@@ -20,6 +20,15 @@ public class MyKeyframeSet {
         mEvaluator = new FloatEvaluator();
     }
 
+    public static MyKeyframeSet ofFloat(float[] values){
+        int numKeyframes = values.length;
+        MyFloatKeyframe keyframes[] = new MyFloatKeyframe[numKeyframes];
+        keyframes[0] = new MyFloatKeyframe(0,values[0]);
+        for (int i = 0;i < numKeyframes;++ i){
+            keyframes[i] = new MyFloatKeyframe(i / (numKeyframes - 1),values[i]);
+        }
+        return new MyKeyframeSet(keyframes);
+    }
 
 
 }

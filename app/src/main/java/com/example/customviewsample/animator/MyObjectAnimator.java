@@ -4,7 +4,7 @@ import android.view.View;
 
 import java.lang.ref.WeakReference;
 
-public class MyObjectAnimator  {
+public class MyObjectAnimator  implements VSYNCManager.AnimationFrameCallback {
 
     private static final String TAG = "tuch";
     /**
@@ -23,18 +23,41 @@ public class MyObjectAnimator  {
     private float index = 0;
     private TimeInterpolator interpolator;
 
-    public MyObjectAnimator(View view, String propertyName, float... value) {
+    MyFloatPropertyValuesHolder myFloatPropertyValuesHolder;
+
+    public MyObjectAnimator(View view, String propertyName, float... values) {
         target = new WeakReference<>(view);
+        myFloatPropertyValuesHolder = new MyFloatPropertyValuesHolder(propertyName,values);
     }
 
-    //    MyFloatPropertyValuesHolder myFloatPropertyValuesHolder;
+
     public void setDuration(int duration) {
         this.mDuration = duration;
     }
 
     public static MyObjectAnimator ofFloat(View view,String propertyName,float... value){
+
         MyObjectAnimator animator = new MyObjectAnimator(view,propertyName,value);
         return animator;
+    }
+
+    /**
+     * 每个16ms回调一次
+     * @param currentTime
+     * @return
+     */
+    @Override
+    public boolean doAnimationFrame(long currentTime) {
+
+        return false;
+    }
+
+
+
+    public void start(){
+        myFloatPropertyValuesHolder.setupSetter(target);
+        mStartTime = System.currentTimeMillis();
+        VSYNCManager.getInstance().add(this);
     }
 
 }

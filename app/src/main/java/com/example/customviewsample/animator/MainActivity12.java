@@ -24,4 +24,5 @@ public class MainActivity12 extends AppCompatActivity {
         objectAnimator.setDuration(2000);
         objectAnimator.start();
     }
+
 }
