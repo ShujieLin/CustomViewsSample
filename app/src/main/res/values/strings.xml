@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">自定义ViewSample</string>
     <string name="helloworld">HELLO</string>
+
+    <string name="title_translation">translationX/Y/Z()</string>
+    <string name="title_rotation">rotation/X/Y()</string>
+    <string name="title_scale">scaleX/Y()</string>
+    <string name="title_alpha">alpha()</string>
+    <string name="title_multi_properties">ViewPropertyAnimator-多属性</string>
+    <string name="title_duration">setDuration()</string>
+    <string name="title_interpolator">setInterpolator()</string>
+    <string name="title_object_animator">ObjectAnimator</string>
+    <string name="title_before_on_draw_foreground">onDrawForeground()-前插</string>
+    <string name="title_after_draw">draw()-后插</string>
+    <string name="title_before_draw">draw()-前插</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="animate">animate</string>
 </resources>

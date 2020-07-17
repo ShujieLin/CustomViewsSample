@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".animator.MainActivity12"></activity>
+        <activity android:name=".animation_sample.MainActivity13"></activity>
+        <activity android:name=".animator.MainActivity12" />
         <activity android:name=".car_view.Main11Activity" />
         <activity android:name=".CustomRecyclerView.Main10Activity" />
         <activity android:name=".asnync_task_view.Main9Activity" />

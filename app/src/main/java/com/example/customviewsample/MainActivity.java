@@ -13,6 +13,7 @@ import android.view.View;
 import com.example.customviewsample.CustomRecyclerView.Main10Activity;
 import com.example.customviewsample.adapter.ViewsListAdapter;
 import com.example.customviewsample.animation_demo.Main6Activity;
+import com.example.customviewsample.animation_sample.MainActivity13;
 import com.example.customviewsample.animator.MainActivity12;
 import com.example.customviewsample.asnync_task_view.Main9Activity;
 import com.example.customviewsample.big_image.Main7Activity;
@@ -61,9 +62,7 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList.add("自定义RecyclerView");//10
         mList.add("围绕圆心运动动画");//11
         mList.add("自定义动画框架");//12
-
-
-
+        mList.add("给tabLayout添加动画");//13
     }
 
     private void initView() {
@@ -135,6 +134,9 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
                 break;
             case 12:
                 intent = new Intent(this, MainActivity12.class);
+                startActivity(intent);
+            case 13:
+                intent = new Intent(this, MainActivity13.class);
                 startActivity(intent);
             default:
                 break;

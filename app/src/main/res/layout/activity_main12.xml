@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".animator.MainActivity12">
+
     <Button
         android:text="动画"
         android:layout_centerInParent="true"
