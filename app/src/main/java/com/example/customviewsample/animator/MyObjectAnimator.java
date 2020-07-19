@@ -20,10 +20,18 @@ public class MyObjectAnimator  implements VSYNCManager.AnimationFrameCallback {
      * 当前的view
      */
     private WeakReference<View> target;
+
     private float index = 0;
     private TimeInterpolator interpolator;
 
     MyFloatPropertyValuesHolder myFloatPropertyValuesHolder;
+
+    public void setInterpolator(TimeInterpolator interpolator) {
+        mInterpolator = interpolator;
+    }
+
+    private TimeInterpolator mInterpolator;
+
 
     public MyObjectAnimator(View view, String propertyName, float... values) {
         target = new WeakReference<>(view);
@@ -48,6 +56,17 @@ public class MyObjectAnimator  implements VSYNCManager.AnimationFrameCallback {
      */
     @Override
     public boolean doAnimationFrame(long currentTime) {
+
+        float total = mDuration / 16;
+        //执行百分比
+        float fraction = (index ++) / total;
+        if (interpolator != null){
+            fraction = interpolator.getInterpolation(fraction);
+        }
+
+        if (index >= total){
+            index = 0;
+        }
         return false;
     }
 

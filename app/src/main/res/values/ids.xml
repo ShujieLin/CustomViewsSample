@@ -2,4 +2,8 @@
 <resources>
     <item name="imageloader_uri" type="id"/>
     <item name="tag_type_view" type="id"/>
+
+<!--    小红书动画-->
+    <item name="parallax_pager" type="id"/>
+    <item name="parallax_view_tag" type="id"/>
 </resources>

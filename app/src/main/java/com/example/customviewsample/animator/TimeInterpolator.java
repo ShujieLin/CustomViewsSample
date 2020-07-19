@@ -1,4 +1,5 @@
 package com.example.customviewsample.animator;
 
-class TimeInterpolator {
+public interface TimeInterpolator {
+    float getInterpolation(float input);
 }

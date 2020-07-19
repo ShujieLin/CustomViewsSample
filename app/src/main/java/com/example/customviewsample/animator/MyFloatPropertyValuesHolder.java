@@ -3,6 +3,7 @@ package com.example.customviewsample.animator;
 import android.view.View;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class MyFloatPropertyValuesHolder {
@@ -32,6 +33,17 @@ public class MyFloatPropertyValuesHolder {
         try {
             mSetter = View.class.getMethod(methodName,float.class);
         } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setAnimatedValue(View target,float fraction){
+        Object value = mKeyframes.getValue(fraction);
+        try {
+            mSetter.invoke(target,value);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
             e.printStackTrace();
         }
     }

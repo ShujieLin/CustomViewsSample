@@ -30,5 +30,18 @@ public class MyKeyframeSet {
         return new MyKeyframeSet(keyframes);
     }
 
+    public Object getValue(float fraction){
+        MyFloatKeyframe prevKeyframe = mFirstKeyframe;
+        for (int i = 1;i < mKeyframes.size();i ++){
+            MyFloatKeyframe nextKeyframe = mKeyframes.get(i);
+            nextKeyframe = mKeyframes.get(i);
+            if (fraction < nextKeyframe.getFraction()){
+                return mEvaluator.evaluate(fraction,prevKeyframe.getValue(),nextKeyframe.getValue());
+            }
+            prevKeyframe = nextKeyframe;
+        }
+        return null;
+    }
+
 
 }
