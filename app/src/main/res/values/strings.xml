@@ -16,4 +16,30 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="animate">animate</string>
+    <string name="duration">duration</string>
+    <string name="ms_with_value">%dms</string>
+    <string name="titile_argb_evaluator">ArgbEvaluator</string>
+    <string name="title_hsv_evaluatro">hsvEvaluator</string>
+    <string name="titile_of_object">OfObject</string>
+    <string name="title_property_values_holder">PorpertyValuesHolder</string>
+    <string name="title_animator_set">AnimatorSet</string>
+    <string name="titile_keyframe">Keyframe</string>
+
+
+    <string-array name="interpolators">
+        <item>AccelerateDecelerateInterpolator</item>
+        <item>LinearInterpolator</item>
+        <item>AccelerateInterpolator</item>
+        <item>DecelerateInterpolator</item>
+        <item>AnticipateInterpolator</item>
+        <item>OvershootInterpolator</item>
+        <item>AnticipateOvershootInterpolator</item>
+        <item>BounceInterpolator</item>
+        <item>CycleInterpolator</item>
+        <item>PathInterpolator</item>
+        <item>FastOutLinearInInterpolator</item>
+        <item>FastOutSlowInInterpolator</item>
+        <item>LinearOutSlowInInterpolator</item>
+    </string-array>
+
 </resources>

@@ -27,6 +27,18 @@ public class MainActivity13 extends AppCompatActivity {
     {
         mPageModels.add(new PageModel(R.layout.sample_translation,R.string.title_translation));
         mPageModels.add(new PageModel(R.layout.sample_rotation,R.string.title_rotation));
+        mPageModels.add(new PageModel(R.layout.sample_scale,R.string.title_scale));
+        mPageModels.add(new PageModel(R.layout.sample_alpha,R.string.title_alpha));
+        mPageModels.add(new PageModel(R.layout.sample_multi_properties,R.string.title_multi_properties));
+        mPageModels.add(new PageModel(R.layout.sample_duration,R.string.title_alpha));
+        mPageModels.add(new PageModel(R.layout.sample_interpolator,R.string.title_interpolator));
+        mPageModels.add(new PageModel(R.layout.sample_object_anomator,R.string.title_object_animator));
+        mPageModels.add(new PageModel(R.layout.sample_argb_evaluator,R.string.titile_argb_evaluator));
+        mPageModels.add(new PageModel(R.layout.sample_hsv_evaluator,R.string.title_hsv_evaluatro));
+        mPageModels.add(new PageModel(R.layout.sample_of_object,R.string.titile_of_object));
+        mPageModels.add(new PageModel(R.layout.property_values_holder_layout,R.string.title_property_values_holder));
+        mPageModels.add(new PageModel(R.layout.sample_animator_set,R.string.title_animator_set));
+        mPageModels.add(new PageModel(R.layout.sample_keyframe,R.string.titile_keyframe));
     }
 
 
