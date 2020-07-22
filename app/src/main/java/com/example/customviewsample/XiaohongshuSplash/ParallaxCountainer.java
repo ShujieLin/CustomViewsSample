@@ -12,8 +12,6 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
-
-import com.example.customviewsample.CustomRecyclerView.Recycler;
 import com.example.customviewsample.R;
 import com.nineoldandroids.view.ViewHelper;
 
@@ -21,8 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParallaxCountainer extends FrameLayout implements ViewPager.OnPageChangeListener {
-
-
     private List<ParallaxFragment> fragments;
     private ParallaxPagerAdapter adatper;
 

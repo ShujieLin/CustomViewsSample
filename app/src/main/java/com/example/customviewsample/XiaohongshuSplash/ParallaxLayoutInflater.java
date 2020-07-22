@@ -93,7 +93,6 @@ public class ParallaxLayoutInflater extends LayoutInflater {
                     if (view != null){
                         return view;
                     }
-
                 }
             }
             return null;

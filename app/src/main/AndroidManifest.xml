@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".layoutInflater_demo.Main15Activity"></activity>
+        <activity android:name=".set_factory.Main16Activity"></activity>
+        <activity android:name=".turn_gray.Main15Activity" />
         <activity android:name=".XiaohongshuSplash.Main14Activity" />
         <activity android:name=".animation_sample.MainActivity13" />
         <activity android:name=".animator.MainActivity12" />

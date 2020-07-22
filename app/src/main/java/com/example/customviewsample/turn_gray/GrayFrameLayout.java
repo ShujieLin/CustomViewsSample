@@ -1,4 +1,4 @@
-package com.example.customviewsample.layoutInflater_demo;
+package com.example.customviewsample.turn_gray;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 public class GrayFrameLayout extends FrameLayout {
     private Paint mPaint = new Paint();
+
     public GrayFrameLayout(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
