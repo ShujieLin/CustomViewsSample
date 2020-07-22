@@ -6,4 +6,5 @@
 <!--    小红书动画-->
     <item name="parallax_pager" type="id"/>
     <item name="parallax_view_tag" type="id"/>
+
 </resources>

@@ -35,7 +35,4 @@ public class ParallaxFragment extends Fragment {
 
     }
 
-
-
-
 }

@@ -21,6 +21,7 @@ import com.example.customviewsample.big_image.Main7Activity;
 import com.example.customviewsample.car_view.Main11Activity;
 import com.example.customviewsample.grid.PagerActivity;
 import com.example.customviewsample.image_loader.Main8Activity;
+import com.example.customviewsample.layoutInflater_demo.Main15Activity;
 import com.example.customviewsample.pager.Activity3;
 import com.example.customviewsample.simple_custom_layout.CustomLinearLayoutViewActivity;
 import com.example.customviewsample.slidetab.SlideTabActivity;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList.add("自定义动画框架");//12
         mList.add("给tabLayout添加动画");//13
         mList.add("小红书动画");//14
+        mList.add("LayoutInflater Demo");//15
     }
 
     private void initView() {
@@ -142,6 +144,9 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
                 startActivity(intent);
             case 14:
                 intent = new Intent(this, Main14Activity.class);
+                startActivity(intent);
+            case 15:
+                intent = new Intent(this, Main15Activity.class);
                 startActivity(intent);
             default:
                 break;

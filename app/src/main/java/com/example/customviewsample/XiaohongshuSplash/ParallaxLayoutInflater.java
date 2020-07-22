@@ -28,7 +28,6 @@ public class ParallaxLayoutInflater extends LayoutInflater {
         super(original,newContext);
         this.fragment = fragment;
         setFactory2(new ParallaxFactory(this));
-
     }
 
     @Override
@@ -74,11 +73,9 @@ public class ParallaxLayoutInflater extends LayoutInflater {
                     tag.yIn = a.getFloat(4,0f);
                     tag.yOut = a.getFloat(5,0f);
                     view.setTag(R.id.parallax_view_tag,tag);
-
                 }
                 fragment.getParallaxViews().add(view);
                 a.recycle();
-
             }
 
             Log.i(TAG, "onCreateView: " + view);
@@ -115,5 +112,6 @@ public class ParallaxLayoutInflater extends LayoutInflater {
         public View onCreateView(String name, Context context, AttributeSet attrs) {
             return null;
         }
+
     }
 }
