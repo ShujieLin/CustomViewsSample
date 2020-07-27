@@ -141,18 +141,23 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
             case 12:
                 intent = new Intent(this, MainActivity12.class);
                 startActivity(intent);
+                break;
             case 13:
                 intent = new Intent(this, MainActivity13.class);
                 startActivity(intent);
+                break;
             case 14:
                 intent = new Intent(this, Main14Activity.class);
                 startActivity(intent);
+                break;
             case 15:
                 intent = new Intent(this, Main15Activity.class);
                 startActivity(intent);
+                break;
             case 16:
                 intent = new Intent(this, Main16Activity.class);
                 startActivity(intent);
+                break;
             default:
                 break;
 

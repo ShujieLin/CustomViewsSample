@@ -36,7 +36,6 @@ public class Main16Activity extends AppCompatActivity {
                 //你可以在这里将系统类替换为自定义View
 
                 //appcompat 创建view代码
-
                 AppCompatDelegate delegate = getDelegate();
                 View view = delegate.createView(parent, name, context, attrs);
 
@@ -52,7 +51,7 @@ public class Main16Activity extends AppCompatActivity {
     /**
      * 统一设置app中所有字体
      * 很多开发者的实现是这样的，在BaseActivity的onCreate中去从跟布局去递归遍历所有的View
-     * 这种方式虽然方便，但是肯定会带来一定性能问题。
+     * 这种方式虽然方便，但是肯定会带来一定性能问题。所以我们可以通过设置factory2的方式进行字体设置，提高执行效率
      * @param root
      * @param typeface
      */

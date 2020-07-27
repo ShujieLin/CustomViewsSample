@@ -17,14 +17,11 @@ public class Main15Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main15);
-
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull String name, @NonNull Context context, @NonNull AttributeSet attrs) {
-
-
         try {
             if ("FrameLayout".equals(name)){
                 int count = attrs.getAttributeCount();
@@ -34,15 +31,14 @@ public class Main15Activity extends AppCompatActivity {
                     Log.i(TAG, "onCreateView: " + "attributeName = " + attributeName + " attributeValue = " + attributeValue);
                     if (attributeName.equals("id")){
                         int id = Integer.parseInt(attributeValue.substring(1));
+                        //获取属性资源id
                         String idVal = getResources().getResourceName(id);
                         if ("android:id/content".equals(idVal)){
                             GrayFrameLayout grayFrameLayout = new GrayFrameLayout(context,attrs);
                             return grayFrameLayout;
                         }
                     }
-
                 }
-
             }
         }catch (Exception e){
             e.printStackTrace();
