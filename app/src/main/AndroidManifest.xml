@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".set_factory.Main16Activity"></activity>
+        <activity android:name=".skin.Main17Activity"
+            android:configChanges="uiMode"> <!-- 需要配置此属性=uiMode，才能更换navigation  -->
+             ></activity>
+        <activity android:name=".set_factory.Main16Activity" />
         <activity android:name=".turn_gray.Main15Activity" />
         <activity android:name=".XiaohongshuSplash.Main14Activity" />
         <activity android:name=".animation_sample.MainActivity13" />

@@ -22,6 +22,7 @@ import com.example.customviewsample.car_view.Main11Activity;
 import com.example.customviewsample.grid.PagerActivity;
 import com.example.customviewsample.image_loader.Main8Activity;
 import com.example.customviewsample.set_factory.Main16Activity;
+import com.example.customviewsample.skin.Main17Activity;
 import com.example.customviewsample.turn_gray.Main15Activity;
 import com.example.customviewsample.pager.Activity3;
 import com.example.customviewsample.simple_custom_layout.CustomLinearLayoutViewActivity;
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList.add("小红书动画");//14
         mList.add("全部变灰！");//15
         mList.add("setFactory的使用");//16
+        mList.add("换肤");//17
+
     }
 
     private void initView() {
@@ -158,9 +161,12 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
                 intent = new Intent(this, Main16Activity.class);
                 startActivity(intent);
                 break;
+            case 17:
+                intent = new Intent(this, Main17Activity.class);
+                startActivity(intent);
+                break;
             default:
                 break;
-
         }
     }
 
