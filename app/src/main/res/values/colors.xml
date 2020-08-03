@@ -5,4 +5,9 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="transparent">#00000000</color>
     <color name="base_shallow_black">#818181</color>
+
+
+    <!-- 本地/内置换肤颜色（日间） -->
+    <color name="commonTextColor">#008577</color>
+    <color name="commonTextColor1">#ffffff</color>
 </resources>
