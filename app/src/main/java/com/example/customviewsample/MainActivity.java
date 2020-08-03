@@ -21,6 +21,7 @@ import com.example.customviewsample.big_image.Main7Activity;
 import com.example.customviewsample.car_view.Main11Activity;
 import com.example.customviewsample.grid.PagerActivity;
 import com.example.customviewsample.image_loader.Main8Activity;
+import com.example.customviewsample.paint.Main17Activity;
 import com.example.customviewsample.set_factory.Main16Activity;
 import com.example.customviewsample.turn_gray.Main15Activity;
 import com.example.customviewsample.pager.Activity3;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList.add("小红书动画");//14
         mList.add("全部变灰！");//15
         mList.add("setFactory的使用");//16
+        mList.add("paint的使用");//17
     }
 
     private void initView() {
@@ -156,6 +158,10 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
                 break;
             case 16:
                 intent = new Intent(this, Main16Activity.class);
+                startActivity(intent);
+                break;
+            case 17:
+                intent = new Intent(this, Main17Activity.class);
                 startActivity(intent);
                 break;
             default:
