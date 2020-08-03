@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements ViewsListAdapter.
         mList.add("setFactory的使用");//16
         mList.add("换肤");//17
 
+
     }
 
     private void initView() {

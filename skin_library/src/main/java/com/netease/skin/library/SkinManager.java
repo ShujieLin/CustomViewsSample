@@ -6,7 +6,6 @@ import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.netease.skin.library.model.SkinCache;
 import java.lang.reflect.Method;
 import java.util.HashMap;

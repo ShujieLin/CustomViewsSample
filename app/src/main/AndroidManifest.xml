@@ -17,7 +17,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".skin.Main17Activity"
             android:configChanges="uiMode"> <!-- 需要配置此属性=uiMode，才能更换navigation  -->
-             ></activity>
+             </activity>
         <activity android:name=".set_factory.Main16Activity" />
         <activity android:name=".turn_gray.Main15Activity" />
         <activity android:name=".XiaohongshuSplash.Main14Activity" />
